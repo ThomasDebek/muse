@@ -5,6 +5,11 @@ class PostsController < ApplicationController
     @posts = Post.all.order("created_at DESC")
   end
 
+  def published
+    @posts = Post.where(published: true)
+    render action: 'index'
+  end
+
   def new
     @post = Post.new
   end
@@ -43,7 +48,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :link, :description)
+    params.require(:post).permit(:title, :link, :description, :published)
   end
 
   def set_post

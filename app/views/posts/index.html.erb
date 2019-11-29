@@ -11,11 +11,16 @@
       <td><%= post.title %></td>
       <td><%= post.link %></td>
       <td><%= post.description %></td>
-      <td><%= link_to "Show", post , class: "btn btn-primary"  %> </td>
-      <td><%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %></td>
-      <td><%= link_to "Delete", post, method: :delete, data: {confiirm: "Are you sure"}, class: "btn btn-danger" %> <td>
+      <% if user_signed_in? %>
+        <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
+        <td><%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %></td>
+        <td><%= link_to "Delete", post, method: :delete, data: {confiirm: "Are you sure"}, class: "btn btn-danger" %> </td>
+      <% else %>
+        <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
+      <% end %>
+
+
     </tr>
   <% end %>
 
-  <%= link_to "New Post", new_post_path %>
 </table>

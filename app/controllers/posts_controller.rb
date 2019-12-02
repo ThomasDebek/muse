@@ -4,14 +4,16 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC")
+    @user = User.all
   end
 
   def new
-    @post = Post.new
+    #@post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to @post
     else
@@ -44,7 +46,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :link, :description)
+    params.require(:post).permit(:title, :link, :description, :user_id)
   end
 
   def set_post
@@ -52,5 +54,7 @@ class PostsController < ApplicationController
   end
 
 end
+
+
 
 

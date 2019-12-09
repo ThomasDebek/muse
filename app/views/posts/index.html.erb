@@ -1,6 +1,6 @@
 <table xmlns="http://www.w3.org/1999/html">
    <% if user_signed_in? %>
-       <h3>You are logged <%= current_user.email %></h3>
+       <h3>You are logged <%= current_user.email %> | <%= current_user.name %></h3>
     <%else %>
       Nobody is logged in
     <% end %>

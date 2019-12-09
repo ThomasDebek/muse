@@ -1,14 +1,17 @@
 <%= simple_form_for @post do |f| %>
   <p>
+    <%= f.input :image, as: :file %>
+  </p>
+  <p>
     <%= f.input :title %>
   </p>
-
   <p>
     <%= f.input :link %>
   </p>
   <p>
     <%= f.input :description %>
   </p>
+
   <%= f.submit %>
 <% end %>
 

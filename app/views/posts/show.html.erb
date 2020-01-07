@@ -12,10 +12,24 @@
   <strong> Description:</strong>
   <%= @post.description %>
 </p>
-<p>
-  <strong> User:</strong>
-  <%= current_user.name %> :)
-</p>
+
+<% if current_user.blank? %>
+<% else %>
+  <p>
+    <strong> User:</strong>
+    <%= current_user.name %> :)
+  </p>
+<% end  %>
+
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+
 <p>
   <td><%= image_tag @post.image.url(:medium) %></td>
 </p>

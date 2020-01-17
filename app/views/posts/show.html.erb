@@ -1,40 +1,83 @@
+<!--
 <h2>Post Show</h2>
 
 <p>
   <strong> Title:</strong>
-  <%= @post.title %>
+  < @post.title %>
 </p>
 <p>
   <strong> Link:</strong>
-  <%= @post.link %>
+  < @post.link %>
 </p>
 <p>
   <strong> Description:</strong>
-  <%= @post.description %>
+  < @post.description %>
 </p>
 
-<% if current_user.blank? %>
-<% else %>
+< if current_user.blank? %>
+< else %>
   <p>
     <strong> User:</strong>
-    <%= current_user.name %> :)
+    < current_user.name %> :)
   </p>
-<% end  %>
+< end  %>
 
 
 <h2>Comments</h2>
-<%= render @post.comments %>
+< render @post.comments %>
 
 
 <h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+<= render 'comments/form' %>
 
 
 <p>
-  <td><%= image_tag @post.image.url(:medium) %></td>
+  <td>%= image_tag @post.image.url(:medium) %></td>
 </p>
 
 </br>
 <p>
-  <%= link_to 'Back', root_path %>
+  <= link_to 'Back', root_path %>
 </p>
+
+-->
+<div id="post_show">
+  <p> <%= image_tag @post.image.url(:medium) %></p>
+  <h1> <%= @post.title %> </h1>
+  <p> <%= @post.link %></p>
+  <p> <%= @post.description%></p>
+  <p class="user.name">
+    Shared by
+    <%= @post.user.name  %>
+    about
+    <%= time_ago_in_words(@post.created_at) %>
+  </p>
+</div>
+
+
+
+<div id="comments">
+  <h2 class="comment_count">
+    <%= pluralize(@post.comments.count, "Comment") %>
+  </h2>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p class="username">
+        <%= comment.user.name %>
+      </p>
+      <p class="content">
+        <%= comment.content %>
+      </p>
+      <p>
+        <% if @post.user == current_user %>
+          <%= link_to "Edit", edit_post_comment_path(@post), class: "data" %>
+          <%= link_to "Delete", post_comment_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+  <%= render "comments/form" %>
+</div>
+
+
+edit_post_comment

@@ -41,6 +41,14 @@
 
 -->
 
+<p>
+  <% if user_signed_in? %>
+  <h3>You are logged <%= current_user.email %> | <%= current_user.name %></h3>
+   <%else %>
+  Nobody is logged in
+  <% end %>
+</p>
+
 <% @posts.each do |post| %>
   <%= link_to (image_tag post.image.url(:thumb)), post %>
   <h2>
@@ -48,13 +56,17 @@
   </h2>
   <p>
     <%= post.comments.count %> Comments
-    <legend><h1></h1></legend>
+
     <% if user_signed_in? %>
     <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
     <td><%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %></td>
     <td><%= link_to "Delete", post, method: :delete, data: {confiirm: "Are you sure"}, class: "btn btn-danger" %> </td>
+    </br>
+    </br>
+    <legend><h1></h1></legend>
   <% else %>
     <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
+    <legend><h1></h1></legend>
   <% end %>
   </p>
 <% end %>

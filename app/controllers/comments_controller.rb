@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
   def update
     @comment = @post.comments.find(params[:id])
     if @comment.update_attributes(comment_params)
+     # binding.pry
       redirect_to post_path(@post)
     else
       render action: "edit"

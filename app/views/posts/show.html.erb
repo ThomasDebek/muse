@@ -76,5 +76,11 @@
       </p>
     </div>
   <% end %>
-  <%= render "comments/form" %>
+  <legend><h1></h1></legend>
+  <% if @post.user == current_user %>
+    <%= render "comments/form" %>
+  <% else %>
+    <p> If you want to add comment you must <%= link_to 'Sign in', new_user_session_path %> </p>
+  <% end %>
+
 </div>

@@ -1,3 +1,4 @@
+<!--
 <table>
    <% if user_signed_in? %>
        <h3>You are logged <%= current_user.email %> | <%= current_user.name %></h3>
@@ -38,4 +39,30 @@
 
 </table>
 
-44:55git
+-->
+
+<% @posts.each do |post| %>
+  <%= link_to (image_tag post.image.url(:thumb)), post %>
+  <h2>
+    <%= link_to post.title, post %>
+  </h2>
+  <p>
+    <%= post.comments.count %> Comments
+    <legend><h1></h1></legend>
+    <% if user_signed_in? %>
+    <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
+    <td><%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %></td>
+    <td><%= link_to "Delete", post, method: :delete, data: {confiirm: "Are you sure"}, class: "btn btn-danger" %> </td>
+  <% else %>
+    <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
+  <% end %>
+  </p>
+<% end %>
+
+<%= link_to "Add New Inspiration", new_post_path %>
+
+
+
+
+
+

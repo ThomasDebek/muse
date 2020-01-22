@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
     @posts = Post.all.order("created_at DESC")
@@ -33,6 +33,16 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def upvote
+    @post.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @post.downvote_by current_user
+    redirect_to :back
   end
 
   def destroy

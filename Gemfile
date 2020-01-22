@@ -12,6 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pry'
+gem 'acts_as_votable', '~> 0.12.1'
 
 #my add gems
 gem 'simple_form'

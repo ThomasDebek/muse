@@ -52,6 +52,13 @@
     about
     <%= time_ago_in_words(@post.created_at) %>
   </p>
+    <div class="post_data">
+      <p>  <%= pluralize(@post.get_upvotes.size, "Like") %> </p>
+      <p>  <%= pluralize(@post.get_downvotes.size, "Dislike") %> </p>
+      <p> <%= link_to "like", like_post_path(@post), method: :get  %></p>
+      <p> <%= link_to "dislike", dislike_post_path(@post), method: :get  %></p>
+    </div>
+
 </div>
 
 

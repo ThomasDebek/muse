@@ -14,6 +14,7 @@
   <p>
     <%= post.comments.count %> Comments
     <%= post.get_likes.size %> Likes
+    <%= pluralize(post.get_downvotes.size, "Dislike") %>
 
     <% if user_signed_in? %>
     <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
@@ -33,6 +34,6 @@
 
 
 
-
+1:00:23
 
 

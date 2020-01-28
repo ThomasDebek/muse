@@ -1,10 +1,68 @@
-<p>
+<p id="intro" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+   xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <% if user_signed_in? %>
-  <h3>You are logged <%= current_user.email %> | <%= current_user.name %></h3>
-   <%else %>
-  Nobody is logged in
+
+    <span> Hello <%= current_user.name %></span> </br>
+    <span>You are logged in as <%= current_user.email %>  </span> </br>
+    <span>Share your inspiration and see what's inspiring others.</span>
+   <% else %>
+    <p id="intro">
+      <span> What's your muse?  </span>
+      <br/>
+      <span>Share your inspiration and see what's inspiring others.</span>
+    </p>
   <% end %>
 </p>
+
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <div class="post_image">
+          <%= link_to (image_tag post.image.url(:small)), post %>
+        </div>
+        <div class="post_content">
+          <div class="title">
+            <h2>
+              <%= link_to post.title, post %>
+            </h2>
+          </div>
+          <div class="data clearfix">
+            <p class="username">
+              Shared by
+              <%= post.user.name %>
+            </p>
+            <p class="buttons">
+            <span>
+              <i class="fa fa-comments-o"></i>
+              <%= post.comments.count %>
+            </span>
+              <span>
+              <i class="fa fa-thumbs-o-up"></i>
+                <%= post.get_likes.size %>
+            </span>
+            </p>
+          </div>
+          <div class="data clearfix">
+            <% if user_signed_in? %>
+              <span><%= link_to "", post, class: "fa fa-eye" %> </span>
+              <span><%= link_to "", edit_post_path(post), class: "fa fa-pencil" %></span>
+              <span><%= link_to "", post, method: :delete, data: {confiirm: "Are you sure"}, class: "fa fa-trash" %> </span>
+              <legend><h1></h1></legend>
+            <% else %>
+              <td><%= link_to "", post, class: "fa fa-eye" %> </td>
+              <legend><h1></h1></legend>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+
+
+
+<!--
 
 <% @posts.each do |post| %>
   <%= link_to (image_tag post.image.url(:thumb)), post %>
@@ -31,6 +89,10 @@
 <% end %>
 
 <%= link_to "Add New Inspiration", new_post_path %>
+
+
+
+-->
 
 
 

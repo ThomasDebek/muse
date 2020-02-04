@@ -21,7 +21,8 @@
       <nav class="collapse navbar-collapse navbar-ex1-collapse">
         <% if user_signed_in? -%>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'New Post', new_post_path %></li>
+            <div id="logo" class="navbar-brand"> You are logged in as <%= current_user.name %></div>
+            <li><%= link_to 'New Inspiration', new_post_path %></li>
             <li><%= link_to 'Account', edit_user_registration_path %></li>
             <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
           </ul>

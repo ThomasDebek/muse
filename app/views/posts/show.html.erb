@@ -67,7 +67,7 @@
   <h2 class="comment_count">
     <%= pluralize(@post.comments.count, "Comment") %>
   </h2>
-  <% @comments.each do |comment| %>
+  <% @post.comments.each do |comment| %>
     <div class="comment">
       <p class="username">
         <%= comment.user.name %>
@@ -76,18 +76,22 @@
         <%= comment.content %>
       </p>
       <p>
-        <% if @post.user == current_user %>
-          <%= link_to "Edit", edit_post_comment_path(@post), class: "data" %>
-          <%= link_to "Delete", post_comment_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+        <% if current_user && current_user == comment.user %>
+          <%= link_to "Edit",  edit_post_comment_path(@post, comment), class: "data" %>
+          <%= link_to "Delete", post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
         <% end %>
       </p>
     </div>
   <% end %>
   <legend><h1></h1></legend>
-  <% if @post.user == current_user %>
+
+   <% if current_user %>
     <%= render "comments/form" %>
   <% else %>
     <p> If you want to add comment you must <%= link_to 'Sign in', new_user_session_path %> </p>
   <% end %>
 
 </div>
+
+
+<!-- < if @post.user == current_user %> -->

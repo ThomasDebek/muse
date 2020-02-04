@@ -1,7 +1,7 @@
 <p id="intro" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
    xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <% if user_signed_in? %>
 
+  <% if user_signed_in? %>
     <span> Hello <%= current_user.name %></span> </br>
     <span>You are logged in as <%= current_user.email %>  </span> </br>
     <span>Share your inspiration and see what's inspiring others.</span>
@@ -43,7 +43,7 @@
             </p>
           </div>
           <div class="data clearfix">
-            <% if user_signed_in? %>
+            <% if user_signed_in? && current_user && current_user == post.user %>
               <span><%= link_to "", post, class: "fa fa-eye" %> </span>
               <span><%= link_to "", edit_post_path(post), class: "fa fa-pencil" %></span>
               <span><%= link_to "", post, method: :delete, data: {confiirm: "Are you sure"}, class: "fa fa-trash" %> </span>

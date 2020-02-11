@@ -13,7 +13,6 @@
     </p>
   <% end %>
 </p>
-
   <div id="posts">
     <% @posts.each do |post| %>
       <div class="post">
@@ -62,37 +61,6 @@
 
 
 
-<!--
-
-<% @posts.each do |post| %>
-  <%= link_to (image_tag post.image.url(:thumb)), post %>
-  <h2>
-    <%= link_to post.title, post %>
-  </h2>
-  <p>
-    <%= post.comments.count %> Comments
-    <%= post.get_likes.size %> Likes
-    <%= pluralize(post.get_downvotes.size, "Dislike") %>
-
-    <% if user_signed_in? %>
-    <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
-    <td><%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %></td>
-    <td><%= link_to "Delete", post, method: :delete, data: {confiirm: "Are you sure"}, class: "btn btn-danger" %> </td>
-    </br>
-    </br>
-    <legend><h1></h1></legend>
-  <% else %>
-    <td><%= link_to "Show", post, class: "btn btn-primary" %> </td>
-    <legend><h1></h1></legend>
-  <% end %>
-  </p>
-<% end %>
-
-<%= link_to "Add New Inspiration", new_post_path %>
-
-
-
--->
 
 
 

@@ -20,6 +20,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise', '~> 4.7'
 gem 'paperclip', '~> 6.1'
+gem 'aws-sdk', '~> 3.0'
 
 
 group :development, :test do
@@ -37,6 +38,11 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

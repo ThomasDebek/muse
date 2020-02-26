@@ -11,7 +11,7 @@ amazon:
    service: S3
    access_key_id: AKIA4XQC2DEBH4F4RI5H
    secret_access_key: dpVnHMVT3Bf25bz4AS+p2MyETh0HgZInJW2McEqy
-   region: eu(Frankfurt)
+   region: eu-central-1
    bucket: muse-thomas-25.02.2020
 
 # Remember not to checkin your GCS keyfile to a repository

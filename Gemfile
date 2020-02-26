@@ -21,6 +21,9 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.7'
 gem 'paperclip', '~> 6.1'
 gem 'aws-sdk', '~> 3.0'
+gem 'fog-aws'
+
+gem "aws-sdk-s3", require: false
 
 
 group :development, :test do

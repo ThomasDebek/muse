@@ -90,7 +90,14 @@ Rails.application.configure do
           access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
           secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
           s3_region: ENV.fetch('AWS_REGION'),
-      }
+      },
+      path: ":attachment/:id/:style/:filename",
+      url: "https://s3.us-east-2.amazonaws.com",
+      styles: {
+          medium: ["250x250#"],
+          small: ["200x200#"]
+      },
+      default_url: 'missing.png'
   }
 
   # Use a different logger for distributed setups.

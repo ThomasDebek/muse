@@ -10,7 +10,7 @@
   </p>
   <div class="clearfix">
     <div class="post_image_description">
-      <%= image_tag @post.image.url(:medium) %>
+      <%= image_tag @post.image.url(:medium), html: {multipart: true } %>
 
       <div class="description">
         <%= simple_format(@post.description) %>

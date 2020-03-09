@@ -33,3 +33,4 @@
 
 .idea
 .DS_Store
+/config/local_env.yml

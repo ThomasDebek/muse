@@ -1,4 +1,4 @@
-<%= simple_form_for @post do |f| %>
+<%= simple_form_for @post, html: { multipart: true } do |f| %>
   <p>
     <%= f.input :image, as: :file %>
   </p>

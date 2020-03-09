@@ -84,6 +84,7 @@ Rails.application.configure do
 
   # config/environments/production.rb
   config.paperclip_defaults = {
+      has_attached_file: :image,
       storage: :s3,
       s3_credentials: {
           bucket: ENV.fetch('S3_BUCKET_NAME'),

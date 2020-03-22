@@ -94,7 +94,7 @@ Rails.application.configure do
           s3_region: ENV.fetch('AWS_REGION')
       },
       path: ":attachment/:id/:style/:filename",
-      url: "https://s3.us-east-2.amazonaws.com",
+      url: "https://s3.eu-central-1.amazonaws.com",
       styles: {
           medium: ["250x250#"],
           small: ["200x200#"]

@@ -85,6 +85,7 @@ Rails.application.configure do
   # config/environments/production.rb
   config.paperclip_defaults = {
      # has_attached_file: :image,
+      s3_host_name: "s3.#{ENV.fetch('AWS_REGION')}.amazonaws.com",
       storage: :s3,
       s3_protocol: :https,
       s3_credentials: {

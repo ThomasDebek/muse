@@ -31,6 +31,15 @@
               <%= post.user.name %>
             </p>
             <p class="buttons">
+              <% if user_signed_in? && current_user && current_user == post.user %>
+                <span><%= link_to "", post, class: "fa fa-eye" %> </span>
+                <span><%= link_to "", edit_post_path(post), class: "fa fa-pencil" %></span>
+                <span><%= link_to "", post, method: :delete, data: {confiirm: "Are you sure"}, class: "fa fa-trash" %> </span>
+                <legend><h1></h1></legend>
+              <% else %>
+                <span><%= link_to "", post, class: "fa fa-eye" %> </span>
+                <legend><h1></h1></legend>
+              <% end %>
             <span>
               <i class="fa fa-comments-o"></i>
               <%= post.comments.count %>
@@ -41,17 +50,8 @@
             </span>
             </p>
           </div>
-          <div class="data clearfix">
-            <% if user_signed_in? && current_user && current_user == post.user %>
-              <span><%= link_to "", post, class: "fa fa-eye" %> </span>
-              <span><%= link_to "", edit_post_path(post), class: "fa fa-pencil" %></span>
-              <span><%= link_to "", post, method: :delete, data: {confiirm: "Are you sure"}, class: "fa fa-trash" %> </span>
-              <legend><h1></h1></legend>
-            <% else %>
-              <td><%= link_to "", post, class: "fa fa-eye" %> </td>
-              <legend><h1></h1></legend>
-            <% end %>
-          </div>
+
+
         </div>
       </div>
     <% end %>

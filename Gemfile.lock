@@ -1188,7 +1188,7 @@ DEPENDENCIES
   paperclip (~> 6.0.0)
   pg
   pry
-  puma (~> 3.11)
+  puma (~> 3.12, >= 3.12.4)
   rails (~> 6.0)
   rails_12factor
   sass-rails (~> 5.0)
